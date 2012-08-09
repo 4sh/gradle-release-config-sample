@@ -1,14 +1,9 @@
 apply plugin: 'java'
-apply plugin: 'idea'
 
 // Retrieving gradle release plugin
 apply from: "https://launchpad.net/gradle-release/trunk/1.0pre/+download/apply.groovy"
 
 group = "fr.4sh.samples"
-
-ideaModule {
-    variables.put("USER_HOME", file(System.getProperty("user.home")))
-}
 
 release {
     // Some undocumented hacks are present here, based on
