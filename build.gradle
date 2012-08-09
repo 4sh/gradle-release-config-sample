@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+// Retrieving gradle release plugin
+apply from: "https://launchpad.net/gradle-release/trunk/1.0pre/+download/apply.groovy"
+
+group = "fr.4sh.samples"
+name = "gradle-release-config-sample"
+
+ideaModule {
+    variables.put("USER_HOME", file(System.getProperty("user.home")))
+}
+
+release {
+    // Some undocumented hacks are present here, based on
+    // http://bazaar.launchpad.net/~gradle-plugins/gradle-release/trunk/view/head:/src/main/groovy/release/ReleasePlugin.groovy
+
+    // Hack allowing to skip the "next version" prompt
+    project.setProperty("gradle.release.useAutomaticVersion", "true");
+    // Define here custom commit messages
+    newVersionCommitMessage = "Re-snapshoted project to version "
+    preTagCommitMessage = "Preparing version for release "
+    tagCommitMessage = "Tag for version "    
+}
+
+// TODO: uncomment this if you configured an uploadArchives task allowing to deploy your artefacts on a repo manager
+//createReleaseTag.dependsOn uploadArchives
