@@ -4,6 +4,7 @@ apply plugin: 'java'
 apply from: "https://launchpad.net/gradle-release/trunk/1.0pre/+download/apply.groovy"
 
 group = "fr.4sh.samples"
+archivesBaseName = "gradle-release-config-sample"
 
 release {
     // Some undocumented hacks are present here, based on
