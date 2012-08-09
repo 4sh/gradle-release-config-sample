@@ -15,8 +15,8 @@ release {
     // http://bazaar.launchpad.net/~gradle-plugins/gradle-release/trunk/view/head:/src/main/groovy/release/ReleasePlugin.groovy
     // Some limitations still remains compared to the maven world, especially :
     // - The fact that, with git, you _must_ be on master branch, otherwise release won't work
-    // - You can automatize the tagged/nextdev version creation, but you will never be able to prompt these versions from commandline
-    //   (which is usually useful when working with CI server like jenkins)
+    // - You can automatize the tagged/nextdev version creation (see hack below), but you will never be able to pass these versions 
+    //   via sysprops in commandline (which is usually useful when working with CI server like jenkins)
 
     // Hack allowing to skip the "next version" prompt
     project.setProperty("gradle.release.useAutomaticVersion", "true");
