@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 // Retrieving gradle release plugin
-apply from: "https://launchpad.net/gradle-release/trunk/1.0pre/+download/apply.groovy"
+apply from: "https://launchpad.net/gradle-release/trunk/1.0/+download/apply.groovy"
 
 group = "fr.4sh.samples"
 archivesBaseName = "gradle-release-config-sample"
