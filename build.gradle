@@ -5,6 +5,10 @@ apply from: "https://launchpad.net/gradle-release/trunk/1.0/+download/apply.groo
 
 archivesBaseName = "gradle-release-config-sample"
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.2'
+}
+
 subprojects {
   group = "fr.4sh.samples"
 
