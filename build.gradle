@@ -3,15 +3,17 @@ apply plugin: 'java'
 // Retrieving gradle release plugin
 apply from: "https://launchpad.net/gradle-release/trunk/1.0/+download/apply.groovy"
 
-group = "fr.4sh.samples"
 archivesBaseName = "gradle-release-config-sample"
 
-release {
+subprojects {
+  group = "fr.4sh.samples"
+
+  release {
     // Some undocumented hacks are present here, based on
     // http://bazaar.launchpad.net/~gradle-plugins/gradle-release/trunk/view/head:/src/main/groovy/release/ReleasePlugin.groovy
     // Some limitations still remains compared to the maven world, especially :
     // - The fact that, with git, you _must_ be on master branch, otherwise release won't work
-    // - You can automatize the tagged/nextdev version creation (see hack below), but you will never be able to pass these versions 
+    // - You can automatize the tagged/nextdev version creation (see hack below), but you will never be able to pass these versions
     //   via sysprops in commandline (which is usually useful when working with CI server like jenkins)
 
     // Hack allowing to skip the "next version" prompt
@@ -19,9 +21,9 @@ release {
     // Define here custom commit messages
     newVersionCommitMessage = "Re-snapshoted project to version "
     preTagCommitMessage = "Preparing version for release "
-    tagCommitMessage = "Tag for version "    
+    tagCommitMessage = "Tag for version "
+  }
+
+  // TODO: uncomment this if you configured an uploadArchives task allowing to deploy your artefacts on a repo manager
+  //createReleaseTag.dependsOn uploadArchives
 }
-
-// TODO: uncomment this if you configured an uploadArchives task allowing to deploy your artefacts on a repo manager
-//createReleaseTag.dependsOn uploadArchives
-
